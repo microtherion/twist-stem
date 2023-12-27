@@ -16,7 +16,7 @@ module _twist_stem_funnel(width, height, stem, wedge, wall, htol, vtol, pinch) {
     translate([0, 0, height+vtol-wall]) linear_extrude(wall) polygon([[-0.5*width, -r], [-h, -0.5*pd], [-h, 0.5*pd], [-0.5*width, r]]);
 }
 
-module twist_stem_base(width, height, stem, wedge=90, wall=2.0, htol=0.5, vtol=0.5, pinch=0.5) {
+module twist_stem_base(width, height, stem=5, wedge=90, wall=2.0, htol=0.5, vtol=0.5, pinch=0.5) {
     difference() {
         translate([-0.5*width, -0.5*width, 0]) cube([width, width, height]);
         translate([0, 0, wall]) cylinder(height, d=stem+htol);
@@ -25,7 +25,7 @@ module twist_stem_base(width, height, stem, wedge=90, wall=2.0, htol=0.5, vtol=0
     }
 }
 
-module twist_stem_insert(width, height, stem, wedge=90, wall=2.0, vtol=0.5) {
+module twist_stem_insert(width, height, stem=5, wedge=90, wall=2.0, vtol=0.5) {
     cylinder(height-wall+vtol, d=stem);
     rotate([0, 0, 180-0.5*wedge]) rotate_extrude(angle=wedge) square([0.5*width-wall, height-2*wall]);
 }
